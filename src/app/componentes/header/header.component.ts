@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
+import { AutenticacionService } from 'src/app/sevicios/autenticacion.service';
 import { HeaderService } from 'src/app/sevicios/header.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { HeaderService } from 'src/app/sevicios/header.service';
 })
 export class HeaderComponent implements OnInit {
   
-  public usuario: Usuario | undefined;
+  /*public usuario: Usuario | undefined;
   
   public editUsario : Usuario | undefined;
   constructor(private HeaderService : HeaderService) { }
@@ -27,5 +28,19 @@ export class HeaderComponent implements OnInit {
       error:(error:HttpErrorResponse)=>{ alert(error.message);}
     })
   }
+}*/
+usuario:any;
+aut:any;
+usua:any;
+constructor(private headerService: HeaderService, private autenticacionServicio:AutenticacionService ){}
 
+
+ngOnInit(): void {
+    this.headerService.getUser().subscribe(data=>{
+      console.log ("usuariowe"+ JSON.stringify(data));
+      this.usuario=data;
+    })
+    this.aut=this.autenticacionServicio.UsuarioAutenticado;
+  }
+  
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
+import { HeaderService } from './sevicios/header.service';
+import { InterceptorService } from './sevicios/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [HeaderService,
+  { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/sevicios/educacion.service';
-
+import { AutenticacionService } from 'src/app/sevicios/autenticacion.service';
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -16,7 +16,7 @@ export class EducacionComponent implements OnInit {
   public editEducacion:Educacion | undefined;
   public deleteEducacion:Educacion | undefined;
 
-  constructor(private educacionService:EducacionService) { }
+  constructor(private educacionService:EducacionService, private autenticacionService:AutenticacionService) { }
 
   ngOnInit(): void {
     this.getEducaciones();
