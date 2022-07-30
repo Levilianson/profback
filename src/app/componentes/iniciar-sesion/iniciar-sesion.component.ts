@@ -23,6 +23,7 @@ export class IniciarSesionComponent implements OnInit {
     return this.form.get('email');
   }
   get Password(){
+    
     return this.form.get('password');
   }
   onEnviar(event:Event){
@@ -33,5 +34,4 @@ export class IniciarSesionComponent implements OnInit {
       this.ruta.navigate(['/porfolio']);
     })
   }
-
 }

@@ -1,0 +1,16 @@
+.img-fluid{
+    width: 99%;
+    height: auto;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+#fotper{
+    margin-top: -35%;
+    width: 50%;
+    text-align: center;
+    position: relative;
+    margin-left: 6%;
+}
+#editdatos{
+    margin-left: 20%;
+}
