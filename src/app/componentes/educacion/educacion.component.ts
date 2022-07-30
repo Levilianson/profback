@@ -2,8 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Educacion } from 'src/app/models/educacion';
-import { EducacionService } from 'src/app/sevicios/educacion.service';
 import { AutenticacionService } from 'src/app/sevicios/autenticacion.service';
+import { EducacionService } from 'src/app/sevicios/educacion.service';
+
 @Component({
   selector: 'app-educacion',
   templateUrl: './educacion.component.html',
@@ -15,11 +16,13 @@ export class EducacionComponent implements OnInit {
 
   public editEducacion:Educacion | undefined;
   public deleteEducacion:Educacion | undefined;
+  aut:any;
+  constructor(private educacionService:EducacionService, private autenticacionServicio:AutenticacionService) { }
 
-  constructor(private educacionService:EducacionService, private autenticacionService:AutenticacionService) { }
-
+ 
   ngOnInit(): void {
     this.getEducaciones();
+    this.aut=this.autenticacionServicio.UsuarioAutenticado;
   }
   public getEducaciones():void{
     this.educacionService.getEducacion().subscribe({
@@ -79,6 +82,6 @@ export class EducacionComponent implements OnInit {
       error:(error:HttpErrorResponse)=>{ alert(error.message);        
       }     
     })
+   
   }
-
 }
